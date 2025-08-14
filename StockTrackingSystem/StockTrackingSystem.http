@@ -1,0 +1,6 @@
+@StockTrackingSystem_HostAddress = http://localhost:5136
+
+GET {{StockTrackingSystem_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
