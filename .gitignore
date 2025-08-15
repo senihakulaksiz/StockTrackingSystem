@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+StockTrackingSystem/stock.db
+StockTrackingSystem/stock.db-shm
+StockTrackingSystem/stock.db-wal
