@@ -12,6 +12,7 @@ namespace StockTrackingSystem.DbContexts
 
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemProperty> ItemProperties { get; set; }
+        public DbSet<Warehouse> Warehouses { get; set; }
 
     }
 }
