@@ -25,6 +25,8 @@ builder.Services.AddDbContext<StockContext>(options =>
 
 builder.Services.AddScoped<IWarehouseService, WarehouseService>();
 builder.Services.AddScoped<IWarehouseRepository, WarehouseRepository>();
+builder.Services.AddScoped<IStockCardService, StockCardService>();
+builder.Services.AddScoped<IStockCardRepository, StockCardRepository>();
 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
