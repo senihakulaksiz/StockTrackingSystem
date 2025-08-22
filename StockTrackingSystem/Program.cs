@@ -27,6 +27,8 @@ builder.Services.AddScoped<IWarehouseService, WarehouseService>();
 builder.Services.AddScoped<IWarehouseRepository, WarehouseRepository>();
 builder.Services.AddScoped<IStockCardService, StockCardService>();
 builder.Services.AddScoped<IStockCardRepository, StockCardRepository>();
+builder.Services.AddScoped<ITransferService, TransferService>();
+builder.Services.AddScoped<ITransferRepository, TransferRepository>();
 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);

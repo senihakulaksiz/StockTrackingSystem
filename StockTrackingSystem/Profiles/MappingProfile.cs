@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using StockTrackingSystem.Entities;
 using StockTrackingSystem.Models.StockCard;
+using StockTrackingSystem.Models.Transfer;
 
 namespace StockTrackingSystem.Profiles
 {
@@ -21,6 +22,16 @@ namespace StockTrackingSystem.Profiles
             CreateMap<CreateStockCardDto, StockCard>();
             CreateMap<UpdateStockCardDto, StockCard>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+            //Transfer
+            CreateMap<CreateTransferDto, Transfer>();
+            CreateMap<Transfer, TransferViewDto>()
+                .ForMember(d => d.FromWarehouseId, o => o.MapFrom(s => s.FromWarehouseId))
+                .ForMember(d => d.ToWarehouseId, o => o.MapFrom(s => s.ToWarehouseId))
+                .ForMember(d => d.ItemId, o => o.MapFrom(s => s.ItemId))
+                .ForMember(d => d.FromWarehouseName, o => o.MapFrom(s => s.FromWarehouse!.Name))
+                .ForMember(d => d.ToWarehouseName, o => o.MapFrom(s => s.ToWarehouse!.Name))
+                .ForMember(d => d.ItemName, o => o.MapFrom(s => s.Item!.Name));
         }
     }
 }
