@@ -15,6 +15,7 @@ namespace StockTrackingSystem.DbContexts
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<StockCard> StockCards { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
+        public DbSet<Request> Requests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +39,24 @@ namespace StockTrackingSystem.DbContexts
                 e.HasOne(t => t.Item)
                  .WithMany()
                  .HasForeignKey(t => t.ItemId)
+                 .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<Request>(e =>
+            {
+                e.HasOne(r => r.FromWarehouse)
+                 .WithMany()
+                 .HasForeignKey(r => r.FromWarehouseId)
+                 .OnDelete(DeleteBehavior.Restrict);
+
+                e.HasOne(r => r.ToWarehouse)
+                 .WithMany()
+                 .HasForeignKey(r => r.ToWarehouseId)
+                 .OnDelete(DeleteBehavior.Restrict);
+
+                e.HasOne(r => r.Item)
+                 .WithMany()
+                 .HasForeignKey(r => r.ItemId)
                  .OnDelete(DeleteBehavior.Restrict);
             });
         }

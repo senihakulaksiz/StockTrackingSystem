@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using StockTrackingSystem.Entities;
+using StockTrackingSystem.Models.Request;
 using StockTrackingSystem.Models.StockCard;
 using StockTrackingSystem.Models.Transfer;
 
@@ -32,6 +33,13 @@ namespace StockTrackingSystem.Profiles
                 .ForMember(d => d.FromWarehouseName, o => o.MapFrom(s => s.FromWarehouse!.Name))
                 .ForMember(d => d.ToWarehouseName, o => o.MapFrom(s => s.ToWarehouse!.Name))
                 .ForMember(d => d.ItemName, o => o.MapFrom(s => s.Item!.Name));
+
+            //Request
+            CreateMap<CreateRequestDto, Request>();
+            CreateMap<Request, RequestViewDto>()
+                .ForMember(d => d.FromWarehouseName, o => o.MapFrom(s => s.FromWarehouse.Name))
+                .ForMember(d => d.ToWarehouseName, o => o.MapFrom(s => s.ToWarehouse.Name))
+                .ForMember(d => d.ItemName, o => o.MapFrom(s => s.Item.Name));
         }
     }
 }
